@@ -6,6 +6,21 @@ namespace Yube
 {
 	public class ResourceManager : Singleton<ResourceManager>
 	{
+		public T AcquireInstance<T>(T prefab, Transform parent, Vector3 worldPosition, Quaternion rotation, bool startActive = true) where T : MonoBehaviour
+		{
+			T component = AcquireInstance(prefab, parent, startActive);
+			component.transform.position = worldPosition;
+			component.transform.rotation = rotation;
+			return component;
+		}
+
+		public T AcquireInstance<T>(T prefab, Transform parent, Vector3 worldPosition, bool startActive = true) where T : MonoBehaviour
+		{
+			T component = AcquireInstance(prefab, parent, startActive);
+			component.transform.position = worldPosition;
+			return component;
+		}
+
 		public T AcquireInstance<T>(T prefab, Transform parent, bool startActive = true) where T : MonoBehaviour
 		{
 			GameObject instance = AcquireInstance(prefab.gameObject, parent, startActive);
@@ -30,6 +45,7 @@ namespace Yube
 			PooledObject pooledObject = pooledObjs.Dequeue();
 			m_usedObjects.Add(pooledObject);
 			pooledObject.Instance.SetActive(startActive);
+			pooledObject.Instance.transform.SetParent(parent);
 			return pooledObject.Instance;
 		}
 
