@@ -90,7 +90,9 @@ namespace Yube
 				{
 					CreateInstance();
 				}
-				return m_unusedInstances.Dequeue();
+				GameObject instance = m_unusedInstances.Dequeue();
+				m_usedInstances.Add(instance);
+				return instance;
 			}
 
 			public bool ReleaseInstance(GameObject instance)
