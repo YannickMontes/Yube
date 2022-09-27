@@ -5,7 +5,7 @@
   "description": "Yannick unity base engine. Some boilerplate stuff for Unity.",
   "unity": "2021.3",
   "dependencies": {
-    "com.yannickmontes.yube.relays": "https://github.com/YannickMontes/Yube-Relay.git"
+    "com.yannickmontes.yube.relays": "https://github.com/YannickMontes/com.yannickmontes.yube.relays.git"
   },
   "author": {
     "name": "Yannick Montes",
