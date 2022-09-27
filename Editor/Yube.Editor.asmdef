@@ -1,0 +1,16 @@
+{
+    "name": "Yube.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d5db60bf8b4ec7f44b45909d0bfe24f7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

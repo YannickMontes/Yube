@@ -1,0 +1,15 @@
+{
+  "name": "com.yannickmontes.yube",
+  "version": "1.0.0",
+  "displayName": "Yube",
+  "description": "Yannick unity base engine. Some boilerplate stuff for Unity.",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.yannickmontes.yube.relay": "https://github.com/YannickMontes/Yube-Relay.git#1.0.0"
+  },
+  "author": {
+    "name": "Yannick Montes",
+    "email": "montes.yannick@gmail.com",
+    "url": "http://yannickmontes.fr"
+  }
+}

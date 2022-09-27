@@ -1,0 +1,16 @@
+{
+    "name": "Yube",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8d58d99238849df4ea771e74ce03f2ca"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
