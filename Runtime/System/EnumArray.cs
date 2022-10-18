@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Collections.LowLevel.Unsafe;
+using System.Linq;
 
 namespace Yube
 {
@@ -40,23 +41,57 @@ namespace Yube
         public void OnAfterDeserialize()
         {
 #if UNITY_EDITOR
-            string[] enumNames = Enum.GetNames(typeof(ENUM));
-            if (names.Count != enumNames.Length)
+            List<string> enumNames = Enum.GetNames(typeof(ENUM)).ToList();
+            Dictionary<int, CLASS> toMove = new Dictionary<int, CLASS>();
+            for (int i = 0; i < enumNames.Count; i++)
             {
-                for (int i = 0; i < enumNames.Length; i++)
+                CLASS oldValue = null;
+                if (i < names.Count)
                 {
-                    if (i >= names.Count)
+                    if(!enumNames.Contains(names[i]))
                     {
-                        names.Add(enumNames[i]);
-                        values.Add(null);
+                        names.RemoveAt(i);
+                        oldValue = values[i];
+                        values.RemoveAt(i);
                     }
-                    else if (names[i] != enumNames[i])
+                    else
+                    {
+                        int index = enumNames.IndexOf(names[i]);
+                        toMove.Add(index, values[i]);
+                        names.RemoveAt(i);
+                        values.RemoveAt(i);
+                    }
+                }
+
+                if(toMove.ContainsKey(i))
+                {
+                    if (i < names.Count)
                     {
                         names.Insert(i, enumNames[i]);
-                        values.Insert(i, null);
+                        values.Insert(i, toMove[i]);
+                    }
+                    else
+                    {
+                        names.Add(enumNames[i]);
+                        values.Add(toMove[i]);
+                    }
+                    toMove.Remove(i);
+                } 
+                else if (!names.Contains(enumNames[i]))
+                {
+                    if(i < names.Count)
+                    {
+                        names.Insert(i, enumNames[i]);
+                        values.Insert(i, oldValue);
+                    }
+                    else
+                    {
+                        names.Add(enumNames[i]);
+                        values.Add(oldValue);
                     }
                 }
             }
+            
 #endif
         }
 
