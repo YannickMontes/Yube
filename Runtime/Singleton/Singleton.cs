@@ -13,7 +13,7 @@ namespace Yube
 			if (s_instance == null)
 			{
 				s_instance = (T)this;
-				DontDestroyOnLoad(gameObject);
+				DontDestroyOnLoad(gameObject.transform.root.gameObject);
 			}
 			else
 			{
